@@ -9,4 +9,8 @@
     <string name="save">Save</string>
     <string name="profile">Profile</string>
     <string name="et_profile">Profile</string>
+    <string name="to_do_list">To-do list!</string>
+    <string name="here_you_can_write_down_something_important_or_make_a_schedule_for_tomorrow">Here you can write down something important or make a schedule for tomorrow:)</string>
+    <string name="skip">SKIP</string>
+    <string name="next">NEXT</string>
 </resources>

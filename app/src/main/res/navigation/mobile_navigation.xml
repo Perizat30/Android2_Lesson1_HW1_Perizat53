@@ -33,4 +33,9 @@
         android:name="com.example.android2_lesson1_hw1_perizat53.ui.home.new_task.NewTaskFragment"
         android:label="@string/new_task"
         tools:layout="@layout/fragment_new_task" />
+    <fragment
+        android:id="@+id/onBoardFragment"
+        android:name="com.example.android2_lesson1_hw1_perizat53.ui.onboard.OnBoardFragment"
+        android:label="fragment_on_board"
+        tools:layout="@layout/fragment_on_board" />
 </navigation>

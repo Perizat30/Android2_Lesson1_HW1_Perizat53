@@ -57,8 +57,6 @@ class HomeFragment : Fragment() {
             taskAdapter.addTask(TaskModel(
                 title.toString(),desc.toString()
             ))
-
-
         }
     }
 }
