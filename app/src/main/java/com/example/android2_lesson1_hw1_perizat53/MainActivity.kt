@@ -9,6 +9,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.android2_lesson1_hw1_perizat53.databinding.ActivityMainBinding
+import com.example.android2_lesson1_hw1_perizat53.utils.Preferences
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,8 +36,9 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-        navController.navigate(R.id.onBoardFragment)
-
+        if( !Preferences(this).isBoardingShowed()){
+            navController.navigate(R.id.onBoardFragment)
+        }
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)

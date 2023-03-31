@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.example.android2_lesson1_hw1_perizat53.databinding.FragmentProfileBinding
+import com.example.android2_lesson1_hw1_perizat53.extensions.loadImage
+import com.example.android2_lesson1_hw1_perizat53.utils.Preferences
 
 
 class ProfileFragment : Fragment() {
@@ -17,8 +19,13 @@ class ProfileFragment : Fragment() {
 
     private var mGetContent = registerForActivityResult<String, Uri>(
         ActivityResultContracts.GetContent()
-    ) { uri -> Log.e("ololo",":"+ uri )
-        binding.imageIcon.setImageURI(uri)
+    ) { uri -> Log.e("ololo",":+ $uri" )
+
+        binding.imageIcon.loadImage(uri.toString())
+        Preferences(requireContext()).imgUri = uri.toString()
+
+        binding.etProfile.setText(Preferences(requireContext()).saveToEditText)
+
     }
 
     override fun onCreateView(
@@ -29,7 +36,15 @@ class ProfileFragment : Fragment() {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
 
         initListeners()
+        initViews()
         return binding.root
+    }
+
+    private fun initViews() {
+        binding.imageIcon.loadImage(Preferences(requireContext()).imgUri)
+
+        binding.etProfile.setText(Preferences(requireContext()).saveToEditText)
+
     }
 
     private fun initListeners() {
@@ -38,10 +53,12 @@ class ProfileFragment : Fragment() {
         }
     }
 
+
     private fun pickImageFromGallery() {
            mGetContent.launch("image/*")
-         }
-}
+}}
+
+
 // I've commented old version.It also works exactly the same.
 // I rewrote it because the function  startActivityForResult is deprecated
 

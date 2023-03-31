@@ -1,5 +1,6 @@
 package com.example.android2_lesson1_hw1_perizat53.ui.onboard
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
 import com.example.android2_lesson1_hw1_perizat53.R
 import com.example.android2_lesson1_hw1_perizat53.databinding.FragmentOnBoardPageBinding
+import com.example.android2_lesson1_hw1_perizat53.utils.Preferences
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
 
 class OnBoardPageFragment(private var onNextClick: () -> Unit,
@@ -42,6 +44,9 @@ class OnBoardPageFragment(private var onNextClick: () -> Unit,
         }
         binding.btnStart.setOnClickListener{
             findNavController().navigate(R.id.navigation_home)
+
+            Preferences(requireContext()).setBoardingShowed(true)
+
         }
 
     }
