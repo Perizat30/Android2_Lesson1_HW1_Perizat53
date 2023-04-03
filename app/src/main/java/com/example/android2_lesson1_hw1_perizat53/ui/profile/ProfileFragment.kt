@@ -2,6 +2,8 @@ package com.example.android2_lesson1_hw1_perizat53.ui.profile
 
 import android.net.Uri
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -24,14 +26,12 @@ class ProfileFragment : Fragment() {
         binding.imageIcon.loadImage(uri.toString())
         Preferences(requireContext()).imgUri = uri.toString()
 
-        binding.etProfile.setText(Preferences(requireContext()).saveToEditText)
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = FragmentProfileBinding.inflate(inflater, container, false)
 
@@ -51,12 +51,24 @@ class ProfileFragment : Fragment() {
         binding.imageIcon.setOnClickListener{
             pickImageFromGallery()
         }
-    }
+        binding.etProfile.addTextChangedListener(object :TextWatcher{
 
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+            override fun afterTextChanged(s: Editable?) {
+                Preferences(requireContext()).saveToEditText = s.toString()
+            }
+        })
+    }
 
     private fun pickImageFromGallery() {
            mGetContent.launch("image/*")
 }}
+
+
+
 
 
 // I've commented old version.It also works exactly the same.
