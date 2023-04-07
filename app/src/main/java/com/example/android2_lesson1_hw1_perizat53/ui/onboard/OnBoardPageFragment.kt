@@ -1,6 +1,6 @@
 package com.example.android2_lesson1_hw1_perizat53.ui.onboard
 
-import android.content.Context
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,11 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
-import androidx.viewpager.widget.ViewPager
 import com.example.android2_lesson1_hw1_perizat53.R
 import com.example.android2_lesson1_hw1_perizat53.databinding.FragmentOnBoardPageBinding
 import com.example.android2_lesson1_hw1_perizat53.utils.Preferences
-import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
 
 class OnBoardPageFragment(private var onNextClick: () -> Unit,
                           private var onSkipClick: () -> Unit,) : Fragment() {
@@ -23,15 +21,13 @@ class OnBoardPageFragment(private var onNextClick: () -> Unit,
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding= FragmentOnBoardPageBinding.inflate(inflater,container,false)
 
         initViews()
         initListeners()
 
         return binding.root
-
-
     }
 
     private fun initListeners() {
@@ -46,7 +42,6 @@ class OnBoardPageFragment(private var onNextClick: () -> Unit,
             findNavController().navigate(R.id.navigation_home)
 
             Preferences(requireContext()).setBoardingShowed(true)
-
         }
 
     }
@@ -63,6 +58,4 @@ class OnBoardPageFragment(private var onNextClick: () -> Unit,
         binding.btnStart.isVisible=data.isLast==true //false,false,true(visible)
 
     }
-
-
 }

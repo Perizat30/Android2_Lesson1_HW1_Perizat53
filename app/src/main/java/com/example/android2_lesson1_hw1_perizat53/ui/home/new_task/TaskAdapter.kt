@@ -6,13 +6,24 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.android2_lesson1_hw1_perizat53.databinding.TaskItemBinding
 import com.example.android2_lesson1_hw1_perizat53.ui.home.TaskModel
 
-class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
+class TaskAdapter (private var onLongClick: (Int) -> Unit)
+: RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
     private var taskList= arrayListOf<TaskModel>()
 
     fun addTask(taskModel: TaskModel){
         taskList.add(0,taskModel)
 
+    }
+
+    fun addAllTask(list: List<TaskModel>){
+        taskList.clear()
+        taskList.addAll(list)
+        notifyDataSetChanged()
+    }
+
+    fun getTaskForDelete(position: Int):TaskModel{
+        return taskList[position]
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
@@ -30,11 +41,18 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
     }
 
 
-    class TaskViewHolder(private var binding: TaskItemBinding) : RecyclerView.ViewHolder(binding.root) {
+   inner class TaskViewHolder(private var binding: TaskItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(taskModel: TaskModel) {
             binding.itemTitle.text=taskModel.title
             binding.itemDesc.text=taskModel.desc
 
+            itemView.setOnClickListener {
+                //Логика на изменение заметки
+            }
+            itemView.setOnLongClickListener{
+                onLongClick(adapterPosition)
+                return@setOnLongClickListener true
+            }
         }
     }
 }
