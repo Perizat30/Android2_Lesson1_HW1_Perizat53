@@ -1,3 +1,4 @@
+
 package com.example.android2_lesson1_hw1_perizat53.ui.home.new_task
 
 import android.view.LayoutInflater
@@ -6,14 +7,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.android2_lesson1_hw1_perizat53.databinding.TaskItemBinding
 import com.example.android2_lesson1_hw1_perizat53.ui.home.TaskModel
 
-class TaskAdapter (private var onLongClick: (Int) -> Unit)
-: RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
+class TaskAdapter(
+    private var onClick: (Int) -> Unit,
+    private var onLongClick: (Int) -> Unit
+
+) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
     private var taskList= arrayListOf<TaskModel>()
 
     fun addTask(taskModel: TaskModel){
         taskList.add(0,taskModel)
-
+        notifyDataSetChanged()
     }
 
     fun addAllTask(list: List<TaskModel>){
@@ -22,18 +26,19 @@ class TaskAdapter (private var onLongClick: (Int) -> Unit)
         notifyDataSetChanged()
     }
 
-    fun getTaskForDelete(position: Int):TaskModel{
+    fun getTask(position: Int):TaskModel{
         return taskList[position]
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         return TaskViewHolder(
-            TaskItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+            TaskItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         holder.bind(taskList[position])
+
     }
 
     override fun getItemCount(): Int {
@@ -41,18 +46,22 @@ class TaskAdapter (private var onLongClick: (Int) -> Unit)
     }
 
 
-   inner class TaskViewHolder(private var binding: TaskItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class TaskViewHolder(private var binding: TaskItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(taskModel: TaskModel) {
-            binding.itemTitle.text=taskModel.title
-            binding.itemDesc.text=taskModel.desc
+            binding.itemTitle.text= taskModel.title
+            binding.itemDesc.text = taskModel.desc
 
             itemView.setOnClickListener {
-                //Логика на изменение заметки
+                // Логика на изменение заметки
+                onClick(adapterPosition)
             }
-            itemView.setOnLongClickListener{
+
+            itemView.setOnLongClickListener {
                 onLongClick(adapterPosition)
                 return@setOnLongClickListener true
             }
         }
     }
 }
+
+

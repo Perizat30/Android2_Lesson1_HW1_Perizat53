@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         if( !Preferences(this).isBoardingShowed()){
             navController.navigate(R.id.onBoardFragment)
         }
+        //navController.navigate(R.id.authFragment)
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)

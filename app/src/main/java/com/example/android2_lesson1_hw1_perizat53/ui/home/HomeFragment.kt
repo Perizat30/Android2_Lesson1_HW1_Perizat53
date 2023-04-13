@@ -3,6 +3,7 @@ package com.example.android2_lesson1_hw1_perizat53.ui.home
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.*
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -37,7 +38,8 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        taskAdapter=TaskAdapter(this::onLongClickListener)
+
+        taskAdapter=TaskAdapter(this::onClick,this::onLongClickListener)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -83,21 +85,29 @@ class HomeFragment : Fragment() {
         taskAdapter.addAllTask(App.db.taskDao().getAllTasksByDate() as List<TaskModel>)
     }
 
+    private fun onClick(pos: Int) {
+        val task=taskAdapter.getTask(pos)
+        findNavController().navigate(R.id.newTaskFragment, bundleOf(EDIT_KEY to task))
+    }
+
     private fun onLongClickListener(pos:Int){
 
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Deleting...")
-        builder.setMessage("Do you want to delete "+taskAdapter.getTaskForDelete(pos).title)
+        builder.setMessage("Do you want to delete "+taskAdapter.getTask(pos).title)
 
-        builder.setPositiveButton(android.R.string.yes) { dialog, which ->
-            App.db.taskDao().delete(taskAdapter.getTaskForDelete(pos))
+        builder.setPositiveButton(android.R.string.yes) { _, _ ->
+            App.db.taskDao().delete(taskAdapter.getTask(pos))
             getData()
         }
 
-        builder.setNegativeButton(android.R.string.no) { dialog, which ->
+        builder.setNegativeButton(android.R.string.no) { dialog, _ ->
             dialog.dismiss()
         }
         builder.show()
+    }
+    companion object{
+        const val EDIT_KEY="EDIT"
     }
 }
 

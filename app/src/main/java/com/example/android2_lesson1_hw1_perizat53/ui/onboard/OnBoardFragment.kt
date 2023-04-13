@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.android2_lesson1_hw1_perizat53.R
 import com.example.android2_lesson1_hw1_perizat53.databinding.FragmentOnBoardBinding
 
 class OnBoardFragment : Fragment() {
@@ -15,7 +14,7 @@ class OnBoardFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = FragmentOnBoardBinding.inflate(inflater,container,false)
 

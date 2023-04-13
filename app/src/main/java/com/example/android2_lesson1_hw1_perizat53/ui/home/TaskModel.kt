@@ -6,7 +6,8 @@ import androidx.room.PrimaryKey
 @Entity
 data class TaskModel(
     @PrimaryKey(autoGenerate = true)
-    var id: Long? = null ,
-    var title: String? = null ,
-    var desc: String? = null
-)
+   var id: Long? = null,
+    var title: String? = null,
+    var desc: String? = null,
+) : java.io.Serializable
+

@@ -38,4 +38,9 @@
         android:name="com.example.android2_lesson1_hw1_perizat53.ui.onboard.OnBoardFragment"
         android:label="fragment_on_board"
         tools:layout="@layout/fragment_on_board" />
+    <fragment
+        android:id="@+id/authFragment"
+        android:name="com.example.android2_lesson1_hw1_perizat53.ui.auth.AuthFragment"
+        android:label="fragment_auth"
+        tools:layout="@layout/fragment_auth" />
 </navigation>

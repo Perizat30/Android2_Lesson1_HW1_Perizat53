@@ -13,4 +13,6 @@
     <string name="skip">SKIP</string>
     <string name="next">NEXT</string>
     <string name="sort">Sort</string>
+    <string name="send">Send</string>
+    <string name="enter_your_phone_number">Enter your phone number</string>
 </resources>

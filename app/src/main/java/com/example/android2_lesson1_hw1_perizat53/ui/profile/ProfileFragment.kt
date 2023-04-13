@@ -65,11 +65,8 @@ class ProfileFragment : Fragment() {
 
     private fun pickImageFromGallery() {
            mGetContent.launch("image/*")
-}}
-
-
-
-
+}
+}
 
 // I've commented old version.It also works exactly the same.
 // I rewrote it because the function  startActivityForResult is deprecated
