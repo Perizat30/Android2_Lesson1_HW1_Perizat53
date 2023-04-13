@@ -4,6 +4,7 @@ package com.example.android2_lesson1_hw1_perizat53.ui.home.new_task
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.android2_lesson1_hw1_perizat53.R
 import com.example.android2_lesson1_hw1_perizat53.databinding.TaskItemBinding
 import com.example.android2_lesson1_hw1_perizat53.ui.home.TaskModel
 
@@ -39,12 +40,16 @@ class TaskAdapter(
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         holder.bind(taskList[position])
 
+        if (position % 2 == 0) {
+            holder.itemView.setBackgroundResource(R.color.white)
+        } else {
+            holder.itemView.setBackgroundResource(R.color.gray)
+        }
     }
 
     override fun getItemCount(): Int {
         return taskList.size
     }
-
 
     inner class TaskViewHolder(private var binding: TaskItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(taskModel: TaskModel) {
@@ -59,6 +64,7 @@ class TaskAdapter(
             itemView.setOnLongClickListener {
                 onLongClick(adapterPosition)
                 return@setOnLongClickListener true
+
             }
         }
     }
