@@ -3,14 +3,15 @@ pluginManagement {
         gradlePluginPortal()
         google()
         mavenCentral()
+        }
     }
-}
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
+    dependencyResolutionManagement {
+        repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+        repositories {
+            google()
+            mavenCentral()
+        }
     }
-}
-rootProject.name = "Android2_Lesson1_HW1_Perizat53"
-include ':app'
+    rootProject.name = "Android2_Lesson1_HW1_Perizat53"
+    include ':app'
+

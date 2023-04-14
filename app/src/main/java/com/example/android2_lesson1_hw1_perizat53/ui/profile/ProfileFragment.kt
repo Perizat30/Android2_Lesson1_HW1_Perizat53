@@ -10,9 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.android2_lesson1_hw1_perizat53.R
 import com.example.android2_lesson1_hw1_perizat53.databinding.FragmentProfileBinding
 import com.example.android2_lesson1_hw1_perizat53.extensions.loadImage
 import com.example.android2_lesson1_hw1_perizat53.utils.Preferences
+import com.google.firebase.auth.FirebaseAuth
 
 
 class ProfileFragment : Fragment() {
@@ -61,11 +64,15 @@ class ProfileFragment : Fragment() {
                 Preferences(requireContext()).saveToEditText = s.toString()
             }
         })
+        binding.btnLogout.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            findNavController().navigate(R.id.navigation_home)
+        }
     }
 
     private fun pickImageFromGallery() {
-           mGetContent.launch("image/*")
-}
+        mGetContent.launch("image/*")
+    }
 }
 
 // I've commented old version.It also works exactly the same.
