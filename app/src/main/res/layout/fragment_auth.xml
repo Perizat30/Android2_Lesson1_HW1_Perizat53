@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".ui.auth.AuthFragment">
 
     <com.airbnb.lottie.LottieAnimationView
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="48dp"
         android:id="@+id/lottie_anim"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        app:lottie_rawRes="@raw/auth"
+        android:layout_marginTop="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
-        app:lottie_loop="true" />
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/auth" />
 
     <EditText
         android:id="@+id/et_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/lottie_anim"
-        app:layout_constraintStart_toEndOf="@id/ccp"
+        android:autofillHints="Phone"
         android:hint="@string/enter_your_phone_number"
-        android:paddingVertical="12dp"
         android:inputType="phone"
-        android:autofillHints="Phone" />
+        android:paddingVertical="12dp"
+        app:layout_constraintStart_toEndOf="@id/ccp"
+        app:layout_constraintTop_toBottomOf="@id/lottie_anim" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_send"
@@ -45,12 +45,12 @@
         android:id="@+id/et_code"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/lottie_anim"
         android:hint="@string/enter_verification_code"
+        android:importantForAutofill="no"
+        android:inputType="number"
         android:paddingVertical="12dp"
         android:visibility="gone"
-        android:importantForAutofill="no"
-        android:inputType="number" />
+        app:layout_constraintTop_toBottomOf="@id/lottie_anim" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_confirm"
@@ -61,23 +61,61 @@
         android:paddingVertical="12dp"
         android:text="@string/confirm"
         android:textColor="@color/white"
-        app:cornerRadius="12dp"
         android:visibility="gone"
+        app:cornerRadius="12dp"
         app:layout_constraintTop_toBottomOf="@id/et_code" />
-
 
     <com.hbb20.CountryCodePicker
         android:id="@+id/ccp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:ccp_showFullName="false"
-        app:ccp_showPhoneCode="true"
-        app:ccp_showNameCode="false"
-        app:ccp_showFlag="true"
         app:ccp_autoFormatNumber="true"
-        app:layout_constraintStart_toStartOf="parent"
+        app:ccp_showFlag="true"
+        app:ccp_showFullName="false"
+        app:ccp_showNameCode="false"
+        app:ccp_showPhoneCode="true"
+        app:layout_constraintBottom_toTopOf="@id/btn_send"
         app:layout_constraintEnd_toStartOf="@id/et_phone"
-        app:layout_constraintTop_toBottomOf="@id/lottie_anim"
-        app:layout_constraintBottom_toTopOf="@id/btn_send"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lottie_anim" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_resend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/black"
+        android:paddingVertical="12dp"
+        android:text="@string/resend_code"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        app:cornerRadius="12dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_resend_timer" />
+
+    <TextView
+        android:id="@+id/tv_resend_timer"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@color/md_blue_200"
+        android:text="@string/_00_00_00"
+        android:textSize="30sp"
+        android:visibility="gone"
+        android:textAlignment="center"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.805" />
+
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/google_sign_in_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_send"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

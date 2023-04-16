@@ -39,8 +39,7 @@ class OnBoardPageFragment(private var onNextClick: () -> Unit,
             onSkipClick.invoke()
         }
         binding.btnStart.setOnClickListener{
-            findNavController().navigate(R.id.authFragment)
-            findNavController().navigate(R.id.navigation_home)
+            findNavController().navigateUp()
 
             Preferences(requireContext()).setBoardingShowed(true)
         }

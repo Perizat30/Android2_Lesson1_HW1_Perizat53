@@ -10,10 +10,12 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.android2_lesson1_hw1_perizat53.databinding.ActivityMainBinding
 import com.example.android2_lesson1_hw1_perizat53.utils.Preferences
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private var firebaseAuth=FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,8 +40,10 @@ class MainActivity : AppCompatActivity() {
 
         if( !Preferences(this).isBoardingShowed()){
             navController.navigate(R.id.onBoardFragment)
+        }else if (firebaseAuth.currentUser==null){
+            navController.navigate(R.id.authFragment)
         }
-        navController.navigate(R.id.authFragment)
+       // navController.navigate(R.id.authFragment)
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)

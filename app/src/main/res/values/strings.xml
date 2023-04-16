@@ -1,5 +1,5 @@
-<resources>
-    <string name="app_name">Android2_Lesson1_HW1_Perizat53</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" tools:ignore="Typos">Android2_Lesson1_HW1_Perizat53</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
@@ -20,4 +20,9 @@
     <string name="confirm">Confirm</string>
     <string name="enter_verification_code">Enter verification code</string>
     <string name="_996">+996</string>
+    <string name="tv_resend_code">tv_resend_code</string>
+    <string name="resend_code">Resend code</string>
+    <string name="_00_00_00">00.00.00</string>
+
+
 </resources>

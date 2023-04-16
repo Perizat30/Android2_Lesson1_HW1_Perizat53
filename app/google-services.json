@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "723480382304",
-    "project_id": "taskapplication-c18d3",
-    "storage_bucket": "taskapplication-c18d3.appspot.com"
+    "project_number": "156050685676",
+    "project_id": "taskapp-7b629",
+    "storage_bucket": "taskapp-7b629.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:723480382304:android:ac89054c72e94488ebac05",
+        "mobilesdk_app_id": "1:156050685676:android:cf7fea6c47b1e2ee94afc9",
         "android_client_info": {
           "package_name": "com.example.android2_lesson1_hw1_perizat53"
         }
       },
       "oauth_client": [
         {
-          "client_id": "723480382304-101gu2307500qht0jr3ok3m0emeea3v2.apps.googleusercontent.com",
+          "client_id": "156050685676-289ub0bnq3nlsg1gljnftq2ra507q8tu.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBOK40agcnK2r4C4LCajlsG9qI0OSW3gaY"
+          "current_key": "AIzaSyCU9sTkqEt97xAUq_3XU2Tk9F8Hz7Pld7w"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "723480382304-101gu2307500qht0jr3ok3m0emeea3v2.apps.googleusercontent.com",
+              "client_id": "156050685676-289ub0bnq3nlsg1gljnftq2ra507q8tu.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
